@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+sqlalchemy
+psycopg2-binary
+pydantic
+openai-whisper
+transformers
+torch
+moviepy
+python-multipart
+yt-dlp
+pydub
+supabase
+python-dotenv
+numpy
+scikit-learn

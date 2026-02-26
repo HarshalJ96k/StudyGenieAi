@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyGenie AI - Your Smart Study Buddy</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="layout-container">
+        <!-- Sidebar: History -->
+        <aside class="sidebar glass">
+            <div class="sidebar-header">
+                <div class="logo">Study<span>Genie</span></div>
+                <button class="new-chat-btn" onclick="showSection('upload')">+ New Lecture</button>
+            </div>
+            <div class="sidebar-content">
+                <h3>Recent Sessions</h3>
+                <div id="history-list">
+                    <!-- History items will be injected here -->
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <p>v1.0 Beta</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="app">
+            <!-- Section: Upload/Input -->
+            <section id="upload-section" class="active">
+                <div class="hero-container">
+                    <div class="card glass card-3d" id="main-upload-card">
+                        <h1>Transform Lectures into <span>Intelligence</span></h1>
+                        <p>Unlock the power of your videos with AI-generated notes, interactive quizzes, and a
+                            futuristic chat buddy.</p>
+
+                        <div class="input-stack">
+                            <div class="input-group">
+                                <label for="video-url">Video Link</label>
+                                <div class="glow-input">
+                                    <input type="text" id="video-url" placeholder="Paste YouTube link...">
+                                </div>
+                            </div>
+
+                            <div class="divider"><span>OR</span></div>
+
+                            <div class="input-group">
+                                <label for="video-file" class="file-label-3d">
+                                    <div class="icon">📁</div>
+                                    <span id="file-name">Drag & Drop Lecture Video</span>
+                                    <input type="file" id="video-file" accept="video/mp4" hidden>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button id="process-btn" class="primary-btn-glow">
+                            <span class="btn-text">Generate Intelligence</span>
+                            <span class="btn-glow"></span>
+                        </button>
+
+                        <div id="loader" class="hidden">
+                            <div class="scanner-line"></div>
+                            <div class="spinner-futuristic"></div>
+                            <p class="loading-text">Neural engines processing lecture segments...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Results Dashboard -->
+            <section id="results-section" class="hidden">
+                <!-- Action Hub -->
+                <div class="action-hub glass card-3d-effect">
+                    <div class="task-input-bar">
+                        <textarea id="custom-task"
+                            placeholder="Tell AI what to do with this lecture... (e.g. 'Write a poem about this', 'Simplify the main concepts')"></textarea>
+                        <button id="execute-task-btn">Process Request</button>
+                    </div>
+                    <div class="quick-chips">
+                        <button class="chip" onclick="triggerTask('quiz')"><span>⚡</span> Generate Quiz</button>
+                        <button class="chip" onclick="triggerTask('flashcards')"><span>🎴</span> Quick Cards</button>
+                        <button class="chip" onclick="triggerTask('infographic')"><span>📊</span> Explain
+                            Concepts</button>
+                        <button class="chip" onclick="triggerTask('summary')"><span>📝</span> Re-Summarize</button>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <!-- Notes -->
+                    <div class="card glass result-card card-3d-effect">
+                        <div class="card-header">
+                            <span class="icon">📝</span>
+                            <h2>Lecture Intelligence</h2>
+                        </div>
+                        <div id="lecture-notes" class="scrollable-content"></div>
+                    </div>
+
+                    <!-- Chat Buddy -->
+                    <div class="card glass chat-card card-3d-effect">
+                        <div class="card-header">
+                            <span class="icon">🤖</span>
+                            <h2>AI Study Buddy</h2>
+                        </div>
+                        <div id="chat-messages" class="chat-history">
+                            <div class="message buddy">Greetings. I have analyzed your lecture. How may I assist your
+                                learning today?</div>
+                        </div>
+                        <div class="chat-input-container">
+                            <input type="text" id="chat-query" placeholder="Ask about the content...">
+                            <button id="send-btn">🚀</button>
+                        </div>
+                    </div>
+
+                    <!-- Quiz -->
+                    <div class="card glass result-card 3d-effect">
+                        <div class="card-header">
+                            <span class="icon">⚡</span>
+                            <h2>Neural Quiz</h2>
+                        </div>
+                        <div id="quiz-content" class="scrollable-content"></div>
+                    </div>
+
+                    <!-- Flashcards -->
+                    <div class="card glass result-card 3d-effect">
+                        <div class="card-header">
+                            <span class="icon">🎴</span>
+                            <h2>Flash-Sync</h2>
+                        </div>
+                        <div id="flashcards-content" class="flashcards-container"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
