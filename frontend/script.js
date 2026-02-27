@@ -1,4 +1,4 @@
-const API_BASE = "https://huggingface.co/spaces/hj96k/studygenie-backend";
+const API_BASE = "https://hj96k-studygenie-backend.hf.space";
 let currentLectureId = null;
 
 // UI Elements
